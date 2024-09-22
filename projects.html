@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigasyon Menüsü -->
+<header>
+    <nav class="fixed-nav">
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="projects.html" class="active">Projelerim</a></li>
+            <li><a href="education.html">Öğrenim Hayatım</a></li>
+            <li><a href="blog.html">Bloğum</a></li>
+            <li><a href="gallery.html">Galerim</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="projects">
+    <div class="container">
+        <h2>Projelerim</h2>
+        <div id="project-list"></div>
+    </div>
+</section>
+
+<script>
+    const projects = [
+        {
+            title: "Proje 1: UAV Yönlendirme Sistemi",
+            description: "Bu proje, UAV'lerin otonom olarak yönlendirilmesi için bir sistem geliştirmeyi hedefliyor.",
+            date: "2023-01-01",
+            link: "projects/proje1.html",
+            img: "test.jpg"
+        },
+        {
+            title: "Proje 2: Kamera Veri Aktarımı",
+            description: "Bu projede, kameradan alınan verilerin kablosuz olarak aktarılması amaçlanmıştır.",
+            date: "2023-02-01",
+            link: "projects/proje2.html",
+            img: "test.jpg"
+        },
+        {
+            title: "Proje 3: Otonom RC Uçak Simülasyonu",
+            description: "Otonom kontrol algoritmalarının test edildiği bir simülasyon projesidir.",
+            date: "2023-03-01",
+            link: "projects/proje3.html",
+            img: "test.jpg"
+        }
+    ];
+
+    // Projeleri tarihine göre sıralama
+    projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const projectList = document.getElementById('project-list');
+
+    projects.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+        projectCard.innerHTML = `
+            <a href="${project.link}" class="project-link">
+                <img src="${project.img}" alt="${project.title}">
+                <div class="project-details">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <span class="date">Tarih: ${project.date.split('-').reverse().join('.')}</span>
+                </div>
+            </a>
+        `;
+        projectList.appendChild(projectCard);
+    });
+</script>
+
+
+
+
+</body>
+</html>

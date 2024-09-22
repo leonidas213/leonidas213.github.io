@@ -1,33 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-
-        html{
-          width: 100%;
-            height: 100%;
-        }
-
-        body{
-            background-image: linear-gradient(to right bottom, #000000, #2b1d25, #4e354b, #6b5179, #7d73af, #8b8ac9, #9aa2e2, #a8bafc, #c3cafc, #dadbfd, #eeecfe, #ffffff);
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        h1{
-            font-size: 45px;
-            filter: invert(100%);
-        }
-        
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Portfolyosu</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1> wow such Gradient</h1>
-<h1>Such Center</h1>
+
+       <!-- Sabit Navigasyon Menüsü -->
+    <header>
+        <nav class="fixed-nav">
+            <ul>
+                <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="projects.html" >Projelerim</a></li>
+                <li><a href="education.html">Öğrenim Hayatım</a></li>
+                <li><a href="blog.html">Bloğum</a></li>
+                <li><a href="gallery.html">Galerim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Giriş Ekranı -->
+    <section class="giris">
+        <div class="giris-content">
+            <h1>Merhaba, ben [İsmin]</h1>
+            <p>Projelerimi keşfetmek için aşağı kaydır</p>
+            <a href="about.html" class="btn">Hakkımda</a>
+        </div>
+    </section>
+
+    <!-- Hakkımda Bölümü -->
+
+
+
 </body>
 </html>

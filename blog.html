@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloğum</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigasyon Menüsü -->
+<header>
+    <nav class="fixed-nav">
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="projects.html">Projelerim</a></li>
+            <li><a href="education.html">Öğrenim Hayatım</a></li>
+            <li><a href="blog.html" class="active">Bloğum</a></li>
+            <li><a href="gallery.html">Galerim</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="blog">
+    <div class="container">
+        <h2>Bloğum</h2>
+        <div id="blog-list"></div>
+    </div>
+</section>
+
+<script>
+    const blogPosts = [
+        {
+            title: "Blog Yazısı 1",
+            description: "Bu yazı, önemli bir konuyu ele alıyor.",
+            date: "2023-08-15",
+            link: "blog/yazi1.html",
+            img: "test.jpg"
+        },
+        {
+            title: "Blog Yazısı 2",
+            description: "Burada başka bir konuyu detaylandırıyoruz.",
+            date: "2023-09-01",
+            link: "blog/yazi2.html",
+            img: "test.jpg"
+        },
+        {
+            title: "Blog Yazısı 3",
+            description: "Bu yazı, güncel gelişmeleri kapsıyor.",
+            date: "2023-09-10",
+            link: "blog/yazi3.html",
+            img: "test.jpg"
+        }
+    ];
+
+    // Blog yazılarını tarihine göre sıralama
+    blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const blogList = document.getElementById('blog-list');
+
+    blogPosts.forEach(post => {
+        const blogCard = document.createElement('div');
+        blogCard.className = 'project-card'; // Proje kartı stili
+        blogCard.innerHTML = `
+            <a href="${post.link}" class="project-link">
+                <img src="${post.img}" alt="${post.title}">
+                <div class="project-details">
+                    <h3>${post.title}</h3>
+                    <p>${post.description}</p>
+                    <span class="date">Tarih: ${post.date.split('-').reverse().join('.')}</span>
+                </div>
+            </a>
+        `;
+        blogList.appendChild(blogCard);
+    });
+</script>
+
+</body>
+</html>

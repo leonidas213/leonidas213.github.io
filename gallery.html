@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerim</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-item {
+            position: relative; /* Konumlandırmayı etkinleştir */
+        }
+
+        .gallery-item img {
+            width: 100%; /* Resim genişliğini ayarlama */
+            height: auto;
+        }
+
+        .date-label {
+            position: absolute;
+            top: 10px; /* Üst kısımdan 10px aşağıda */
+            right: 10px; /* Sağ kısımdan 10px içeri */
+            background-color: rgba(255, 255, 255, 0.8); /* Beyaz arka plan */
+            padding: 5px; /* İçeride boşluk */
+            border-radius: 5px; /* Yuvarlak kenar */
+            font-size: 12px; /* Küçük yazı */
+        }
+
+
+    </style>
+</head>
+<body>
+
+<!-- Navigasyon Menüsü -->
+<header>
+    <nav class="fixed-nav">
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="projects.html">Projelerim</a></li>
+            <li><a href="education.html">Öğrenim Hayatım</a></li>
+            <li><a href="blog.html">Bloğum</a></li>
+            <li><a href="gallery.html" class="active">Galerim</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="gallery">
+    <div class="container">
+        <h2>Galerim</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+</section>
+
+<script>
+    const galleryItems = [
+        {
+            img: "galeri1.jpg",
+            description: "Proje 1'den bir an.",
+            date: "2023-01-01", // Tarih ekledik
+            link: "projects.html#proje1" // Tıklanabilir link
+        },
+        {
+            img: "galeri1.jpg",
+            description: "Proje 2'de ilerleme kaydettiğim an.",
+            date: "2023-02-01", // Tarih ekledik
+            link: "https://github.com/kullaniciadi/proje2" // Tıklanabilir link
+        },
+        {
+            img: "galeri1.jpg",
+            description: "Otonom uçuş testi.",
+            date: "2023-03-01", // Tarih ekledik
+            link: null // Tıklanamaz
+        }
+    ];
+
+    // Tarihe göre sıralama
+    galleryItems.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const galleryGrid = document.getElementById('gallery-grid');
+    galleryItems.forEach(item => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        const dateFormatted = item.date.split('-').reverse().join('.'); // Format date
+
+        if (item.link) {
+            galleryItem.innerHTML = `
+            <a href="${item.link}" target="_blank">
+                <img src="${item.img}" alt="Proje Görseli">
+                <p>${item.description} <span class="link-icon">🔗</span></p> <!-- Link icon -->
+                <div class="date-label">${dateFormatted}</div>
+            </a>
+        `;
+        } else {
+            galleryItem.innerHTML = `
+            <div>
+                <img src="${item.img}" alt="Proje Görseli">
+                <p>${item.description}</p>
+                <div class="date-label">${dateFormatted}</div>
+            </div>
+        `;
+        }
+        galleryGrid.appendChild(galleryItem);
+    });
+</script>
+
+</body>
+</html>

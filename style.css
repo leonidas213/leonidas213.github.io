@@ -1,0 +1,260 @@
+/* Genel Ayarlar */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth;
+}
+
+/* Genel yazı stilini değiştirmek için bu kısmı kullanabilirsin */
+body, p, h3 {
+    text-align: left; /* Tüm sayfadaki yazıları sola yasla */
+}
+
+/* Sadece başlıklar için ortalama */
+h1, h2 {
+    text-align: center; /* Sadece başlıkları ortala */
+    padding: 10px;
+}
+
+/* Belirli bir bölüm için yazı hizalaması */
+#about, #projects, #blog, #gallery {
+    text-align: left; /* Her bölümdeki metinler sola yaslansın */
+}
+
+
+/* Navigasyon Menüsü */
+header {
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 16px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #ff6347;
+    border-radius: 4px;
+}
+
+/* Giriş Ekranı */
+.giris {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('d8bbEI.gif') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.giris-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.giris-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Hakkımda ve Diğer Bölümler */
+section {
+    padding: 50px 0;
+    text-align: center;
+    padding-top: 60px;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Sabit Navigasyon Stili */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333; /* Arka plan rengi */
+    z-index: 1000; /* Diğer içeriklerin üstünde görünmesini sağlar */
+    height: 60px; /* Menünün yüksekliği */
+}
+
+/* Ana İçerik için Marj Ayarı */
+main {
+    margin-top: 70px; /* Menünün yüksekliğinden biraz fazla, böylece içeriğin menünün altında kalmaz */
+}
+
+.fixed-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Ortalar */
+}
+
+.fixed-nav li {
+    margin: 0 15px;
+}
+
+.fixed-nav a {
+    color: white; /* Menü bağlantı rengi beyaz */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    padding: 15px;
+}
+
+.fixed-nav a:hover {
+    background-color: #555; /* Üzerine gelince arka plan rengi değişir */
+}
+
+/* Aktif Buton Stili */
+.fixed-nav a.active {
+    background-color: #2980b9; /* Aktif butonun rengi */
+    border-radius: 5px;
+}
+
+
+
+/* Galeri için buton stil ayarları */
+.gallery-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gallery-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gallery-buttons button:hover {
+    background-color: #2980b9;
+}
+
+/* Galeri için grid ayarları */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+/* Resimlerin Sabit Boyutlandırılması */
+.gallery-item img {
+    width: 100%;
+    max-width: 300px; /* En fazla 300px genişlik */
+    height: 200px; /* Sabit yükseklik */
+    object-fit: cover; /* Taşma olursa kırp */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item p {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.project-card {
+    display: flex;
+    align-items: flex-start; /* Üstten hizala */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px; /* Kartlar arasında boşluk */
+    height: 150px; /* Sabit yükseklik */
+    width: 100%; /* Genişlik, sayfanın genişliğine eşit */
+    box-sizing: border-box; /* Padding ve border dahil olsun */
+
+}
+
+.project-link {
+    display: flex; /* İçerik alanını esnek hale getir */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    color: inherit; /* Yazı rengini miras al */
+    height: 100%; /* Bağlantı alanının yüksekliğini kapsayacak şekilde ayarla */
+    width: 100%;
+}
+
+.project-details {
+    flex-grow: 1; /* Metin alanının genişlemesini sağlar */
+    display: flex;
+    flex-direction: column; /* Dikey hizalama */
+    justify-content: space-between; /* İçeriği üst ve alt arasında dağıt */
+}
+
+.date {
+    margin-top: auto; /* Tarih en alt kısma yerleşsin */
+    font-size: 0.9rem; /* Küçük font */
+    color: #777; /* Gri renk */
+    text-align: right; /* Sola yasla */
+}
+
+.project-card img {
+    width: 200px; /* Resim boyutu */
+    height: auto; /* Oran koruma */
+    border-radius: 5px;
+    margin-right: 15px; /* Resim ile metin arasında boşluk */
+}
+
+
+/* Geri Dön Butonu */
+
+.back-button {
+    margin: 20px 0; /* Üst ve alt boşluk */
+}
+
+.back-button a {
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    color: #007bff; /* Renk ayarı */
+    font-weight: bold; /* Kalın yazı */
+    font-size: 1.1rem; /* Yazı boyutu */
+}
+
+.back-button a:hover {
+    text-decoration: underline; /* Üzerine gelindiğinde alt çizgi ekle */
+}
+
+.link-icon {
+    font-size: 0.8em; /* Adjust size as needed */
+    margin-left: 5px; /* Space between text and icon */
+    vertical-align: middle; /* Align icon with text */
+}
