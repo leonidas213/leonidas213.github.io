@@ -6,26 +6,34 @@
     <title>Galerim</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .gallery-item {
-            position: relative; /* Konumlandırmayı etkinleştir */
+        .gallery-grid {
+            display: flex; /* Flexbox layout */
+            flex-wrap: wrap; /* Allow wrapping */
+            gap: 20px; /* Space between items */
         }
 
-        .gallery-item img {
-            width: 100%; /* Resim genişliğini ayarlama */
-            height: auto;
+        .gallery-item {
+            position: relative; /* Enable positioning */
+            width: calc(33% - 20px); /* Width for 3 items per row */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%; /* Media width */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor for clickable items */
         }
 
         .date-label {
             position: absolute;
-            top: 10px; /* Üst kısımdan 10px aşağıda */
-            right: 10px; /* Sağ kısımdan 10px içeri */
-            background-color: rgba(255, 255, 255, 0.8); /* Beyaz arka plan */
-            padding: 5px; /* İçeride boşluk */
-            border-radius: 5px; /* Yuvarlak kenar */
-            font-size: 12px; /* Küçük yazı */
+            top: 10px; /* From top */
+            right: 10px; /* From right */
+            background-color: rgba(255, 255, 255, 0.8); /* White background */
+            padding: 5px; /* Padding */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 12px; /* Small text */
         }
-
-
     </style>
 </head>
 <body>
@@ -54,21 +62,27 @@
 <script>
     const galleryItems = [
         {
-            img: "galeri1.jpg",
+            media: "galeriResimleri/galeri1.jpg", // Resim
             description: "Proje 1'den bir an.",
-            date: "2023-01-01", // Tarih ekledik
+            date: "2023-01-01", // Tarih
             link: "projects/proje1.html" // Tıklanabilir link
         },
         {
-            img: "galeri1.jpg",
+            media: "galeriResimleri/video1.mp4", // Video
             description: "Proje 2'de ilerleme kaydettiğim an.",
-            date: "2023-02-01", // Tarih ekledik
+            date: "2023-02-01", // Tarih
             link: "https://github.com/leonidas213" // Tıklanabilir link
         },
         {
-            img: "galeri1.jpg",
+            media: "galeriResimleri/test.jpg", // Resim
             description: "Otonom uçuş testi.",
-            date: "2023-03-01", // Tarih ekledik
+            date: "2023-03-01", // Tarih
+            link: null // Tıklanamaz
+        },
+        {
+            media: "galeriResimleri/video2.mp4", // Video
+            description: "Otonom uçuş denemesi.",
+            date: "2023-04-01", // Tarih
             link: null // Tıklanamaz
         }
     ];
@@ -80,20 +94,28 @@
     galleryItems.forEach(item => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
-        const dateFormatted = item.date.split('-').reverse().join('.'); // Format date
+        const dateFormatted = item.date.split('-').reverse().join('.'); // Tarih formatı
 
+        const mediaElement = item.media.endsWith('.mp4') ?
+            `<video class="video-thumbnail" controls muted>
+            <source src="${item.media}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>` :
+            `<img src="${item.media}" alt="Proje Görseli">`;
+
+        // Metin için bağlantı, resim veya video tıklanamaz
         if (item.link) {
             galleryItem.innerHTML = `
-            <a href="${item.link}" target="_blank">
-                <img src="${item.img}" alt="Proje Görseli">
-                <p>${item.description} <span class="link-icon">🔗</span></p> <!-- Link icon -->
+            <div>
+                ${mediaElement}
+                <p><a href="${item.link}" target="_blank">${item.description} <span class="link-icon">🔗</span></a></p>
                 <div class="date-label">${dateFormatted}</div>
-            </a>
+            </div>
         `;
         } else {
             galleryItem.innerHTML = `
             <div>
-                <img src="${item.img}" alt="Proje Görseli">
+                ${mediaElement}
                 <p>${item.description}</p>
                 <div class="date-label">${dateFormatted}</div>
             </div>
@@ -101,6 +123,8 @@
         }
         galleryGrid.appendChild(galleryItem);
     });
+
+
 </script>
 
 </body>
